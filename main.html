@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>쥐구멍 서비스</title>
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+	html {
+	  font-family: "Noto Sans KR", sans-serif;
+	  font-size: 62.5%;
+	  word-break: keep-all;
+	  letter-spacing: -0.02em;
+	  overflow-x: hidden;
+	}
+	body, h1, h2, h3, p, ol, ul {
+	  margin: 0;
+	  padding: 0;
+	}
+	header {
+	  height: 1000px;
+	}
+	li {
+	  list-style-type: none;
+	}
+	header h1 {
+	  font-size: 6rem;
+	  padding-top: 480px;
+	}
+	header p {
+	  font-size: 1.6rem;
+	  padding-top: 20px;
+	}
+	header h1, header p {
+	  color: white; padding-left: 30px;
+	}
+
+	.wrap {
+	  width: 1000px;
+	  margin: auto;
+	}
+	.flex {
+	  display: flex;
+	}
+	.logo {
+	  padding: 15px;
+	  color: white;
+	  font-size: 1.2rem;
+	}
+	.menu {
+	  width: 600px;
+	}
+	.menu li a {
+	  text-decoration: none;
+	  padding: 15px;
+	  display: block;
+	  color: white;
+	  font-size: 1.2rem;
+	}
+	.menu li a:hover {
+	  color: #FFD464;
+	  text-decoration: underline;
+	  transition: all 1s;
+	}
+	
+	.nav-space-between {
+	  justify-content: space-between;
+	}
+	.navbar {
+	  position: fixed;
+	  background: #000000;
+background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.69) 48%, rgba(255, 255, 255, 0) 100%);
+	  width: 100%;
+	  z-index: 1000;
+	}
+
+	.title-bg {
+	  background: url('assets/images/header-bg.png') center/cover no-repeat;
+	  width: 100%;height: 100vh; background-attachment: fixed;
+	}
+
+	.title-bg h1{line-height: 1.2; font-size: 6.4rem; padding-left: 50px; padding-top: 550px}
+
+	.white{color: white;}
+
+
+	.center-text {
+	  text-align: center;
+	  margin: auto;
+	}
+	.h2-size {
+	  font-size: 5.6rem;
+	  font-weight: bold;
+	}
+
+	.feature-section {
+	  position: relative;
+	  background: black;
+	  height: 3900px;
+	  overflow: hidden;
+	  padding-top: 300px;
+	}
+	.feature-path {
+	  position: absolute;
+	  top: 1160px;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  width: 1200px;
+	  height: auto;
+	  z-index: 0;
+	}
+
+	.step-img {
+	  position: absolute;
+	  transform: translateX(-50%);
+	  z-index: 1;
+	}
+	.step-img img {
+	  width: 100%;
+	  height: auto;
+	}
+
+	.step-1-img { top: 790px; left: 72%; width: 920px; }
+	.step-2-img { top: 1120px; left: 22%; width: 630px; }
+	.step-3-img { top: 2000px; left: 77%; width: 730px; }
+	.step-4-img { top: 2610px; left: 29%; width: 710px; }
+	.step-5-img { top: 3120px; left: 80%; width: 540px; }
+
+	.step-box {
+	  position: absolute;
+	  max-width: 500px;
+	  display: flex;
+	  align-items: flex-start;
+	  gap: 20px;
+	  z-index: 2;
+	}
+	.step-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: white;
+  color: black;
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 1;
+  border-radius: 50%;
+  flex-shrink: 0; 
+  box-sizing: border-box; 
+}
+
+	.step-text {
+	  color: white;
+	}
+	.step-text h3 {
+	  font-size: 2.4rem;
+	  font-weight: bold;
+	  margin-bottom: 15px;
+	}
+	.step-text p {
+	  font-size: 1.6rem;
+	  line-height: 1.5;
+	}
+
+	.step-1 { top: 970px; left: 15%; }
+	.step-2 { top: 1716px; left: 51%; }
+	.step-3 { top: 2310px; left: 20%; }
+	.step-4 { top: 2970px; left: 54%; }
+	.step-5 { top: 3650px; left: 20%; }
+
+	.feature-card-section {
+	  background: #fff;
+	  padding: 100px 0;
+	  padding-top: 500px; height: 1400px;
+	}
+	.section-title {
+	  font-size: 5.6rem;
+	  text-align: center;
+	  padding-bottom: 140px;
+	}
+	.card-grid {
+	  display: grid;
+	  grid-template-columns: repeat(3, 1fr);
+	  gap: 60px;
+	  justify-items: center;
+	}
+	.card {
+	  width: 280px;
+	  height: 360px;
+	  perspective: 1000px;
+	  display: flex;              
+  	align-items: center;        
+  	justify-content: center;
+		}
+	.card-inner {
+	  position: relative;
+	  width: 100%;
+	  height: 100%;
+	  transition: transform 0.6s ease;
+	  transform-style: preserve-3d;
+	  transform-origin: center;
+	  backface-visibility: hidden;
+	  transform: translateZ(0);
+	}
+	.card:hover .card-inner {
+	  transform: rotateY(180deg);
+	}
+	.card-front, .card-back {
+	  position: absolute;
+	  width: 100%;
+	  height: 100%;
+	  backface-visibility: hidden;
+	  border-radius: 16px;
+	  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  flex-direction: column;
+	  padding: 20px;
+	}
+	.card-front {
+	  background: #fff;
+	  z-index: 2;
+	}
+	.card-front img {
+	  width: 200px;
+	  margin-bottom: 40px;
+	}
+	.card-front h3 {
+	  font-size: 1.8rem;
+	  text-align: center;
+	}
+	.card-back {
+	  background: #333;
+	  color: white;
+	  transform: rotateY(180deg);
+	  font-size: 1.6rem;
+	  text-align: center;
+	  line-height: 1.6;
+	  padding: 30px;
+	}
+
+		.section-title {
+      font-size: 5.6rem;
+      font-weight: bold;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .slide {
+      min-width: 100%;
+      height: 600px;
+      flex-shrink: 0;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+    }
+
+    .slide-text {
+      position: relative;
+      z-index: 2;
+      color: white;
+      padding: 40px;
+    }
+
+    .slide-text h3 {
+      font-size: 3rem;
+      margin-bottom: 8px;
+    }
+
+    .slide-text p {
+      font-size: 1.6rem;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 10px 15px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .slider-btn.prev {
+      left: 20px;
+    }
+
+    .slider-btn.next {
+      right: 20px;}
+
+    .unique-mousehole-section{padding-top: 300px}
+
+    .caution-section {
+  background: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTRmdG9uazQ0b2d5dGxmNjh6YnZxZTFhcHg2cHFvODM1NWcybGZyZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l4EoWmytLPA7Rppeg/giphy.gif');
+  background-attachment: fixed;
+  background-size: 90px auto;
+  background-repeat: repeat;
+  color: white;
+  height: 2500px; padding-top: 500px;
+}
+
+@keyframes blink-color {
+  0%, 100% {
+    color: white;
+    background-color: transparent;
+  }
+  50% {
+    color: yellow;
+    background-color: black;
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.caution-wrap{padding: 100px 60px; display: flex; gap: 110px;
+  align-items: flex-start; position: relative;}
+
+
+.caution-sticky {
+  position: sticky;
+  top: 100px;
+  font-size: 6.4rem;
+  font-weight: 800;
+  line-height: 1.2;
+  height: fit-content;
+  flex-shrink: 0;
+  animation: blink 1.2s infinite;
+}
+
+.caution-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.caution-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding-bottom: 100px;
+}
+
+.number {
+  background: white;
+  color: black;
+  font-weight: bold;
+  width: 66px;
+  height: 66px;
+  font-size: 3.8rem;
+  transform: translateY(6px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+}
+
+.text h3 {
+  font-size: 7.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.text p {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  padding-bottom: 50px;
+}
+
+    .faq-section {
+  background: black;
+  color: white;
+  padding-top: 300px; padding-bottom: 120px;
+}
+.faq-item {
+  border-top: 1px solid #444;
+  padding: 30px 0;
+}
+.faq-question {
+  background: none;
+  border: none;
+  width: 100%;
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+}
+.faq-answer {
+	font-size: 1.8rem;
+  max-height: 0;
+  overflow: hidden;
+  padding-top: 20px;
+  transition: max-height 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;}
+
+.faq-item.active .icon {
+  transform: rotate(45deg);
+}
+.icon {
+  font-size: 4.8rem;
+  transition: transform 0.3s ease;
+}
+
+.testimonial-section {
+  background: #fff;
+  padding: 200px 0;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 5rem;
+  font-weight: 700;
+  margin-bottom: 80px;
+  margin: auto;
+  text-align: center;
+}
+
+.testimonial-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.testimonial-card {
+  width: 300px;
+  padding: 40px;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  background: white;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+}
+
+.stars {
+  color: #F5A623;
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+}
+
+.quote {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+.profile img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 1.4rem;
+  color: #666;
+}
+
+.footer {
+  background-color: #FFD464;
+  color: black;
+  padding: 60px 20px;
+  font-size: 1.4rem;
+}
+.footer-content {
+  justify-content: space-between;
+  gap: 60px;
+}
+.footer h3, .footer h4 {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+.footer p, .footer li {
+  opacity: 0.8;
+  line-height: 1.6;
+}
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+.footer a {
+  color: black;
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+.copy {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  opacity: 0.5;
+}
+
+.button{display: inline-block;
+  margin-top: 40px;
+  background: #ffc043;
+  padding: 14px 24px;
+  border-radius: 30px;
+  line-height: 1;
+  font-size: 1.4rem;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;}
+
+ .button:hover;{display: inline-block;
+  margin-top: 40px;
+  background: black;
+  padding: 14px 24px;
+  border-radius: 30px;
+  line-height: 1;
+  font-size: 1.4rem;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;}
+
+  .hero-row {
+  display: flex;
+  align-items: center; 
+  gap: 6px;
+  padding-left: 50px;
+  margin-top: 20px;
+}
+
+.subtext {
+  font-size: 1.6rem;
+  color: white;
+  margin: 0;
+  padding-top: 37px;
+}
+
+.mousehole-display-section {
+  padding: 150px 100px;
+  background: #f5f5f5;
+}
+
+.mousehole-filter {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 30px;
+  background: #eee;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter-btn.active {
+  background: #FFD464;
+  font-weight: bold;
+}
+
+.mousehole-content {
+  display: flex;
+  gap: 40px;
+}
+
+.mousehole-main {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  padding: 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mousehole-main::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  z-index: 0;
+}
+
+.mousehole-info {
+  position: relative;
+  z-index: 1;
+}
+
+.mousehole-info h2 {
+  font-size: 4.4rem;
+  margin-bottom: 20px;
+}
+
+.mousehole-info p {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.mousehole-thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 220px;
+
+  max-height: 600px;    
+  overflow-y: auto;      
+  padding-right: 4px;    .mousehole-thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 220px;
+
+  max-height: 500px;     /* 고정 높이 설정 */
+  overflow-y: auto;      /* 내부만 세로 스크롤 */
+  padding-right: 4px;    /* 스크롤바 여유 */
+}
+
+.mousehole-thumbs::-webkit-scrollbar {
+  width: 6px;
+}
+.mousehole-thumbs::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+}
+
+.mousehole-thumbs::-webkit-scrollbar {
+  width: 6px;
+}
+.mousehole-thumbs::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.mousehole-thumbs .thumb {
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid transparent;
+  transition: 0.3s;
+  display: block;
+}
+
+.mousehole-thumbs .thumb.active {
+  border-color: #FFD464;
+}
+
+.mousehole-thumbs .thumb img {
+  width: 100%;
+  display: block;
+  height: 120px;     
+  object-fit: cover;
+}
+
+.mousehole-thumbs .thumb.hidden {
+  display: none;
+}
+
+
+	</style>
+</head>
+<body>
+<nav class="navbar">
+	<div class="wrap flex nav-space-between">
+		<div class="logo">쥐구멍 서비스</div>
+		<ul class="menu flex nav-space-between">
+			<li><a href="#how-to-use">이용 방법</a></li>
+			<li><a href="#functions">기능 소개</a></li>
+			<li><a href="#popular">쥐구멍 모음</a></li>
+			<li><a href="#reviews">사용 후기</a></li>
+			<li><a href="#caution">주의사항</a></li>
+			<li><a href="#faq">FAQ</a></li>
+		</ul>
+	</div>
+</nav>
+<header class="title-bg">
+	<h1>당신만을 위한<br>퍼스널 쥐구멍 서비스</h1>
+	<div class="hero-row">
+	<p class="button">예약하기</p>
+	<p class="subtext">도피하고싶은 사람들을 위해,<br>이 세상 어디에도 없는 하나뿐인 맞춤형 도피처</p>
+</div>
+</header>
+<section id="how-to-use" class="feature-section">
+	<svg class="feature-path" viewBox="0 0 849 1700" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path
+  d="M842 58.4726C795.999 51.9455 710 32.1537 651.5 58.4727C573.21 93.6949 568.367 183.609 486.5 251.677C404.633 319.746 282.664 238.569 217.95 238.569C131.149 238.569 36.2843 287.988 45.6405 398.949C54.9967 509.91 183.644 530.424 277.206 573.316C370.768 616.209 394.938 737.426 466.668 765.4C538.399 793.373 671.724 699.196 729.421 765.4C796.416 842.273 752.811 942.564 671.724 985.457C590.638 1028.35 536.06 974.267 466.668 1017.16C397.277 1060.05 359.072 1151.43 299.037 1199.92C239.001 1248.41 45.6406 1179.4 45.6406 1294.1C45.6405 1415.09 156.355 1371.49 217.95 1414.38C279.545 1457.27 329.444 1581.29 387.141 1614.86C433.298 1641.71 596.095 1652.78 671.724 1654.95"
+  stroke="#9A706F"
+  stroke-width="90"
+/>
+
+	</svg>
+
+	<div class="step-img step-1-img"><img src="assets/images/step-1.png"></div>
+	<div class="step-img step-2-img"><img src="assets/images/step-2.png"></div>
+	<div class="step-img step-3-img"><img src="assets/images/step-3.png"></div>
+	<div class="step-img step-4-img"><img src="assets/images/step-4.png"></div>
+	<div class="step-img step-5-img"><img src="assets/images/step-5.png"></div>
+
+	<div class="wrap">
+		<h2 class="white center-text h2-size">쥐구멍 서비스, 어떻게 이용하면 되나요?</h2>
+	</div>
+
+<div class="step-box step-1">
+    <span class="step-num">1</span>
+    <div class="step-text">
+      <h3>먼저 결제를 하여 예약을 진행해주세요!</h3>
+      <p>바로 결제 시 5분 이내 출동합니다~</p>
+    </div>
+  </div>
+
+  <div class="step-box step-2">
+    <span class="step-num">2</span>
+    <div class="step-text">
+      <h3>쥐들이 목적지를 향해 가고 있습니다.<br>조금만 기다려주세요!</h3>
+      <p>GPS를 기반으로 하여 사용자의 위치를 파악해<br>쥐들이 땅굴을 파고 가는 중입니다.</p>
+    </div>
+  </div>
+
+  <div class="step-box step-3">
+    <span class="step-num">3</span>
+    <div class="step-text">
+      <h3>쥐구멍 진입하기</h3>
+      <p>쥐구멍이 완성되었습니다.<br>최대한 몸을 말아 구멍 안으로 들어가세요!</p>
+    </div>
+  </div>
+
+  <div class="step-box step-4">
+    <span class="step-num">4</span>
+    <div class="step-text">
+      <h3>마음껏 회피를 즐기기</h3>
+      <p>당신은 이제 문제 상황으로부터 완전히 벗어났습니다.<br>이 순간을 신나게 즐기세요!</p>
+    </div>
+  </div>
+
+  <div class="step-box step-5">
+    <span class="step-num">5</span>
+    <div class="step-text">
+      <h3>퇴장</h3>
+      <p>시간이 다 되면, 오셨던 길 그대로 나가시면 됩니다.<br>
+      추가요금을 지불하신다면 쥐들이 집앞까지 배웅을 해드립니다.</p>
+    </div>
+  </div>
+</section>
+<section id="functions" class="feature-card-section">
+  <div class="wrap">
+    <h2 class="section-title">쥐구멍에는 어떤 기능들이 있나요?</h2>
+    <div class="card-grid">
+
+    	<div class="card">
+			<div class="card-inner">
+			  <div class="card-front">
+				<img src="assets/images/only-one.png" alt="1인 전용 쥐구멍">
+				<h3>1인 전용 쥐구멍</h3>
+			  </div>
+			  <div class="card-back">
+				<p>쥐구멍 하나당 오직 한 명씩만 입장 가능합니다. 지긋지긋한 사람들, 이젠 안녕!</p>
+			  </div>
+			</div>
+		  </div>
+
+		  	<div class="card">
+			<div class="card-inner">
+			  <div class="card-front">
+				<img src="assets/images/slient.png" alt="소음 차단">
+				<h3>소음 차단</h3>
+			  </div>
+			  <div class="card-back">
+				<p>자동차 소리, 떠드는 소리, 공간소음으로부터 벗어난 조용한 공간을 누리세요.</p>
+			  </div>
+			</div>
+		  </div>
+
+			<div class="card">
+			<div class="card-inner">
+			  <div class="card-front">
+				<img src="assets/images/food.png" alt="공짜 식사">
+				<h3>공짜 식사</h3>
+			  </div>
+			  <div class="card-back">
+				<p>배고프시다구요? 도시락은 안싸오셔도 됩니다. 쥐 친구들이 도시에서 가져온 간식들이 기다려요!</p>
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="card">
+			<div class="card-inner">
+			  <div class="card-front">
+				<img src="assets/images/popcorn.png" alt="영화 관람">
+				<h3>영화 관람</h3>
+			  </div>
+			  <div class="card-back">
+				<p>아늑한 쥐굴에서 쥐들과 함께 최신 영화를 즐기세요! 넷플릭스, 왓챠 등 OTT 준비 완료!</p>
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="card">
+			<div class="card-inner">
+			  <div class="card-front">
+				<img src="assets/images/wifi.png" alt="와이파이 사용 가능">
+				<h3>와이파이 사용 가능</h3>
+			  </div>
+			  <div class="card-back">
+				<p>쥐구멍 안에서도 빵빵한 와이파이! 최신형 공유기 완비!</p>
+			  </div>
+			</div>
+		  </div>
+
+		   <div class="card">
+			<div class="card-inner">
+			  <div class="card-front">
+				<img src="assets/images/water.png" alt="신선한 지하수">
+				<h3>신선한 지하수</h3>
+			  </div>
+			  <div class="card-back">
+				<p>식수 걱정은 이제 끝! 쥐구멍은 언제나 지하수 옆에 위치합니다.</p>
+			  </div>
+			</div>
+		  </div>
+
+    </div>
+  </div>
+</section>
+
+ <section id="popular" class="mousehole-display-section">
+  <h2 class="section-title">쥐구멍 모음</h2>
+
+  <div class="mousehole-filter">
+    <button class="filter-btn active" data-filter="all">전체</button>
+    <button class="filter-btn" data-filter="popular">🔥 인기</button>
+    <button class="filter-btn" data-filter="unique">🧪 이색</button>
+  </div>
+
+  <div class="mousehole-content">
+  
+    <div class="mousehole-main" id="mouseholeMain" style="background-image: url('assets/images/943.webp')">
+      <div class="mousehole-info">
+        <h2 id="mouseholeTitle">9와 4분의 3 승강장 벽 뒤편 쥐구멍</h2>
+        <p id="mouseholeDesc">비록 머글들은 눈치채지 못했지만, 쥐들은 언제나 알고 있었습니다.</p>
+        <p id="mouseholePrice">1시간 기준 · <strong>55,000원</strong></p>
+        <a href="#" class="button">예약하기</a>
+      </div>
+    </div>
+
+ 
+    <ul class="mousehole-thumbs">
+      <li class="thumb active" data-category="unique"
+          data-img="assets/images/943.webp"
+          data-title="9와 4분의 3 승강장 벽 뒤편 쥐구멍"
+          data-desc="비록 머글들은 눈치채지 못했지만, 쥐들은 언제나 알고 있었습니다."
+          data-price="55,000원">
+        <img src="assets/images/943.webp" alt="">
+      </li>
+      <li class="thumb" data-category="unique"
+          data-img="assets/images/newyork.png"
+          data-title="뉴욕 지하철 배수로 쥐구멍"
+          data-desc="혼잡한 도시 속 가장 고요한 도피처."
+          data-price="35,000원">
+        <img src="assets/images/newyork.png" alt="">
+      </li>
+      <li class="thumb" data-category="unique"
+          data-img="assets/images/it.png"
+          data-title="하수구 속 빨간 풍선 옆 쥐구멍"
+          data-desc="그것, 아니 누군가와 눈이 마주치지 않도록 주의하세요."
+          data-price="10,000원">
+        <img src="assets/images/it.png" alt="">
+      </li>
+      <li class="thumb" data-category="popular"
+          data-img="assets/images/mountain.png"
+          data-title="동네 뒷산 쥐구멍"
+          data-desc="가장 클래식한 도피처. 근처 뒷산에 위치."
+          data-price="5,000원">
+        <img src="assets/images/mountain.png" alt="">
+      </li>
+      <li class="thumb" data-category="popular"
+          data-img="assets/images/sachal.jpg"
+          data-title="인근 사찰"
+          data-desc="생각도, 이름도, 존재감도 사라지는 곳. 쥐들은 이걸 ‘해탈 구멍’이라 부릅니다."
+          data-price="7,000원">
+        <img src="assets/images/sachal.jpg" alt="">
+      </li>
+      <li class="thumb" data-category="popular"
+          data-img="assets/images/house.jpg"
+          data-title="한적한 폐가"
+          data-desc="소음도 없고, 간섭도 없고, 가끔 바람만 부는 완벽한 도피처."
+          data-price="4,000원">
+        <img src="assets/images/house.jpg" alt="">
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+  <section id="caution" class="caution-section">
+  <div class="caution-wrap">
+  <div class="caution-sticky">⚠️ 주의사항 안내 ⚠️</div>
+  <ul class="caution-list">
+    <li>
+      <div class="number">1</div>
+      <div class="text">
+        <h3>흑사병, 2차 감염 책임은<br>개인에게 있습니다.</h3>
+        <p>마음은 치유가 돼도, 몸은 아닐 수도 있어요. 예방접종을 추천드립니다.</p>
+      </div>
+    </li>
+    <li>
+      <div class="number">2</div>
+      <div class="text">
+        <h3>공간이 협소하니<br>최대한 웅크려주세요.</h3>
+        <p>쥐들이 먼저 차지한 자리는 양보해주시길 바랍니다.</p>
+      </div>
+    </li>
+    <li>
+      <div class="number">3</div>
+      <div class="text">
+        <h3>간혹 상한 음식들이<br>제공될 수도 있습니다.</h3>
+        <p>입에 맞지 않더라도, 열심히 음식을 옮겨온 쥐들에게 감사의 마음을 표현해주세요.</p>
+      </div>
+    </li>
+    <li>
+      <div class="number">4</div>
+      <div class="text">
+        <h3>낮가림 심한 쥐들이<br>있습니다.</h3>
+        <p>갑작스러운 접근은 자제해주세요!</p>
+      </div>
+    </li>
+     <li>
+      <div class="number">5</div>
+      <div class="text">
+        <h3>쥐구멍은 임시 도피처일뿐,<br>해결책은 아닙니다.</h3>
+        <p>하지만 아주 잠깐은 다 잊게 해줄 거예요.</p>
+      </div>
+    </li>
+  </ul>
+</div>
+</section>
+
+<section id="reviews" class="testimonial-section">
+  <h2 class="section-title">서비스 사용 후기</h2>
+  <div class="testimonial-grid">
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="quote">“쥐가 요리를 다 가르쳐주더라구요”</p>
+      <div class="profile">
+        <img src="assets/images/user1.png" alt="사용자 사진">
+        <p class="name">파리 레스토랑 전 헤드셰프</p>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="quote">“그 친구는.. 나보다 나를 더 잘 알았어요.”</p>
+      <div class="profile">
+        <img src="assets/images/user2.png" alt="사용자 사진">
+        <p class="name">매일 밤마다 쥐와 함께 울던 대학생</p>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="quote">“처음에는 물릴까봐 무서웠는데, 나중에는 같이 물고있는 절 발견했죠.”</p>
+      <div class="profile">
+        <img src="assets/images/user3.png" alt="사용자 사진">
+        <p class="name">평범한 직장인</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section id="faq" class="faq-section">
+  <div class="wrap">
+    <h2 class="section-title">자주 묻는 질문들</h2>
+    <div class="faq-item">
+      <button class="faq-question">❓ 쥐구멍 서비스는 어떤 상황에 사용할 수 있나요?<span class="icon">+</span></button>
+      <div class="faq-answer">갑자기 사라지고 싶을 때, 당황스러울 때, 그냥 조용히 있고 싶을 때 언제든지 사용할 수 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">🤢 다녀온 뒤로부터 울렁거리고 열도 나고 그러는데… 혹시 흑사병인가요?<span class="icon">+</span></button>
+      <div class="faq-answer">체온이 39도 이상 지속된다면 즉시 가까운 병원으로 가주세요. 쥐구멍은 보험이 안 됩니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">🐭 바닥이 콘크리트면, 쥐가 구멍을 어떻게 파고 들어오나요?<span class="icon">+</span></button>
+      <div class="faq-answer">저의 업체 쥐들은 업무상 늘 드릴을 가지고 다닙니다. 건물 파손 비용의 경우에는 따로 책임지지 않는 점 양해 부탁드립니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">🏠 만약에 쥐구멍 안에서 계속 체류하면요?<span class="icon">+</span></button>
+      <div class="faq-answer">그럼… 쥐들이 가만히 있지 않아요.
+
+		쥐들은 철저히 *“1시간 단위 계약제”*로 움직이는 친구들입니다.<br>
+		업무시간 외엔 쥐들도 자기 삶이 있어요.<br>
+		각자 숨겨둔 치즈 모으기, 치즈 도굴하기, 쥐동굴 블로그 운영,
+		쥐유튜브 편집 등 바쁜 일과가 줄줄이 대기 중입니다.</div>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="wrap flex footer-content">
+    <div class="footer-left">
+      <h3>쥐구멍 서비스</h3>
+      <p>당신의 숨고 싶은 순간, 쥐구멍을 마련해드립니다.</p>
+      <p class="copy">© 2025 Jwigumeong Corp. All rights reserved.</p>
+    </div>
+
+    <div class="footer-center">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#how-to-use">이용 방법</a></li>
+        <li><a href="#functions">기능 소개</a></li>
+        <li><a href="#popular">쥐구멍 모음</a></li>
+        <li><a href="#caution">주의사항</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-right">
+      <h3>고객지원</h3>
+      <p>대표 쥐 상담원: 010-9727-쥐쥐쥐쥐</p>
+      <p>이메일: help@jwigumeong.com</p>
+      <p>본사는 잠실역 2번출구 밑 3번 굴착로에 위치합니다.</p>
+    </div>
+  </div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>
